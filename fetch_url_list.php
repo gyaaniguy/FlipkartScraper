@@ -88,9 +88,9 @@ function get_cat_id($cat) {
         }
 }
 
-/*
- * DONE emove all products that were last updated a while ago and are not available (this is to keep the db size down) ;
- * NEXT SCRIPT - populates the 15percent, 15amount and json columns..
+/**
+ * STEP 2, after the scraping process, analyzes the data looking for price changes and - populates the 15percent, 15amount and json columns..
+ * DONE remove all products that were last updated a while ago and are not available (this is to keep the db size down) ;
  */
 function get_available_products() {
     global $db_connection;
@@ -206,7 +206,7 @@ function filter_int($text){
 }
 
 /**
- * main function
+ * main function that parses results table into mysql.
  * @param $qp
  * @param $cat_id
  * @return bool
@@ -419,8 +419,4 @@ function href_normalize($href){
 function clean_string($strin) {
     $strin = preg_replace('#\r|\n|\s+#', ' ', $strin);
     return trim($strin);
-}
-
-function send_error_mail_if_any(){
-
 }
